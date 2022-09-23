@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import CartCard from './components/CartCard'
 import ProductCard from './components/ProductCard'
 import { productsList } from "./data/products";
 import { 
@@ -9,8 +8,10 @@ import {
     Text, 
     Select, 
     SimpleGrid, 
-    Heading 
+    Heading,
 } from '@chakra-ui/react'
+import Cart from "./components/Cart";
+import Header from "./components/Header";
 
 export default class App extends Component {
     state = {
@@ -85,18 +86,22 @@ export default class App extends Component {
 
     render() {
         return(
-            <>
-                <Flex justify='center'>
-                    <Box w='52%'>
+            <Box bg='whitesmoke'>
+                <Header 
+                  cart={this.state.cart}
+                />
+                <Flex justify='center' p='1em' >
+                    <Box w={['full', '35vw']}>
                         <Input
                           type='text' 
-                          placeholder='Olá, o que você está procurando hoje?'
+                          placeholder='Pesquisar...'
                           value={this.state.query}
                           onChange={this.handleQuery}
+                          bg={'white'}
                         />
                     </Box>
                 </Flex>
-                <Flex justify='center'>
+                <Flex justify='center' paddingRight={'10px'} paddingLeft={'10px'}  >
                     <Box>
                         <Text>Preço Mínimo:</Text>
                         <Input 
@@ -107,6 +112,7 @@ export default class App extends Component {
                           placeholder='R$ 50,00'
                           value={this.state.minPrice}
                           onChange={this.handleMinPrice}
+                          bg={'white'}
                         />
                     </Box>
                     <Box>
@@ -116,14 +122,16 @@ export default class App extends Component {
                           min='0'
                           max='1000'
                           name={'maximo'}
-                          placeholder='R$ 10.000,00'
+                          placeholder='R$ 1.000,00'
                           value={this.state.maxPrice}
                           onChange={this.handleMaxPrice}
+                          bg={'white'}
                         />
                     </Box>
                 </Flex>
                 <Flex 
-                  justify='space-between' 
+                  p='1em'
+                  justify='center' 
                   align={'baseline'}
                   >
                     <Box>
@@ -131,17 +139,16 @@ export default class App extends Component {
                           placeholder='Oredenar por:'
                           value={this.state.sortingParameter}
                           onChange={this.handleSortingParameter}
+                          bg={'white'}
                           >
                             <option value={'price'}>Preço</option>
                         </Select>
                     </Box>
                     <Box>
-                        <Text color='black'>Quantidade: {productsList.lenght}</Text>
-                    </Box>
-                    <Box>
                         <Select
                           value={this.state.order}
                           onChange={this.handleOrder}
+                          bg={'white'}
                           >
                             <option value={1}>Crescente</option>
                             <option value={-1}>Decrescente</option>
@@ -149,14 +156,55 @@ export default class App extends Component {
                     </Box>
                   </Flex>
 
-                <Heading size='lg'>Todos os Produtos</Heading>
-                <Flex>
+                <Heading bg='whitesmoke' size='lg' marginRight={'10px'} textAlign={'center'} p={'1em'}>
+                  Todos os Produtos 
+                   <span> |{productsList.length}| </span>
+                </Heading>
+
+                <Flex 
+                  display={{ base: '', md: 'flex' }}
+                  bg='whitesmoke'
+                  >
+                <Box
+                  w={['full', '19%']}
+                  border='1px' 
+                  borderColor={'gray.200'}
+                  margin={['', '1em']}
+                  >
+                    <Heading
+                      size='md'
+                      textAlign={'center'}
+                      p='1em'
+                      color='orange'
+                      >
+                      Carrinho:
+                    </Heading>
+                    <Cart 
+                      cart={this.state.cart}
+                      removeItemFromCart={this.removeItemFromCart}
+                    />
+                    <Heading
+                      borderTop='2px'
+                      borderColor='black'
+                      borderTopStyle={"dotted"}
+                      as='h3'
+                      size='md'
+                      textAlign={'center'}
+                      marginTop='1em'
+                      >
+                      Valor Total: R${this.totalValue()},00
+                    </Heading>
+                </Box>
+                
                 <SimpleGrid 
                   templateColumns={['repeat(1, 1fr)', 'repeat(3, 1fr)']} //responsivity
                   size='lg' 
                   align='center' 
+                  pos="absolute" 
+                  right={['5', '0']}
                   spacing='40px' 
                   w='80%'  
+                  p='1em'
                   >
                     {
                         productsList
@@ -188,44 +236,9 @@ export default class App extends Component {
                           )
                         })
                         }
-                </SimpleGrid>
-                <Box
-                  w='20%'
-                  bg='whitesmoke'
-                  >
-                    <Heading
-                      size='lg'
-                      textAlign={'center'}
-                      paddingBottom='1em'
-                      >
-                      Carrinho:
-                    </Heading>
-                    {
-                        this.state.cart.map((item) => {
-                          return (
-                            <CartCard 
-                              key={item.id}
-                              id={item.id}
-                              cart={this.state.cart}
-                              removeItemFromCart={() => this.removeItemFromCart(item.id)}
-                              title={item.title}
-                              quantity={item.quantity}
-                              price={item.price}
-                            />
-                            )
-                        })
-                    }
-                    <Heading
-                      as='h3'
-                      size='md'
-                      textAlign={'center'}
-                      paddingBottom='1em'
-                      >
-                      Valor Total: R${this.totalValue()},00
-                    </Heading>
-                </Box>
+                </SimpleGrid>             
                 </Flex>
-            </>
+            </Box>
         )
     }
 }

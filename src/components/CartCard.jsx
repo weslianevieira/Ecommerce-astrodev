@@ -20,7 +20,7 @@ export default class CartCard extends Component {
               >
                 <Box color='orange' fontWeight={700}>{this.props.quantity}x</Box>
                 <Box>{this.props.title}</Box>
-                <Box fontWeight={700} >R${this.props.price},00</Box>
+                <Box fontWeight={700}>R${this.props.price},00</Box>
                 <Box>
                 <button
                   onClick={() => this.props.removeItemFromCart(this.props.id)}

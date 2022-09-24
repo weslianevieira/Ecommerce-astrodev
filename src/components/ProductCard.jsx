@@ -49,7 +49,7 @@ export default class ProductCard extends Component {
                             </Text>
                         </Flex>
                         <Flex justify='space-between'>
-                            <Text fontSize={'1.5em'} color='red' fontWeight={800}>
+                            <Text fontSize={'1.5em'} color='blue' fontWeight={800}>
                             {this.props.product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL',})}
                             </Text>
                             <Button

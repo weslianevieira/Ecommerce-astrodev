@@ -17,13 +17,9 @@ export const productsList = [
                 size: '[\'PP\', \'P\', \'M\', \'G\', \'GG\']',
                 material: 'Malha Fria',
             },
-            price: 50,
+            price: 60,
             category: "Camisetas",
-            inCart: false,
-            count: 0,
-            total: 0,
             paymentMethods: "[\"Cartão de Crédito\",\"Cartão de Débito\",\"PayPal\",\"Boleto\"]",
-            dueDate: "2021-12-30 00:00:00"
         },
         {
             id: 2,
@@ -36,13 +32,9 @@ export const productsList = [
                 size: '[\'PP\', \'P\', \'M\', \'G\', \'GG\']',
                 material: 'Algodão',
             },
-            price: 110,
+            price: 130,
             category: "Camisetas",
-            inCart: false,
-            count: 0,
-            total: 0,
             paymentMethods: "[\"Cartão de Crédito\",\"Cartão de Débito\",\"PayPal\",\"Boleto\"]",
-            dueDate: "2021-12-30 00:00:00"
         },
         {
             id: 3,
@@ -57,11 +49,7 @@ export const productsList = [
             },
             price: 50,
             category: "Camisetas",
-            inCart: false,
-            count: 0,
-            total: 0,
             paymentMethods: "[\"Cartão de Crédito\",\"Cartão de Débito\",\"PayPal\",\"Boleto\"]", 
-            dueDate: "2021-12-30 00:00:00"
         },
         {
             id: 4,
@@ -74,13 +62,9 @@ export const productsList = [
                 size: '[\'PP\', \'P\', \'M\', \'G\', \'GG\']',
                 material: 'Algodão',
             },
-            price: 110,
+            price: 150,
             category: "Camisetas", 
-            inCart: false,
-            count: 0,
-            total: 0,
             paymentMethods: "[\"Cartão de Crédito\",\"Cartão de Débito\",\"PayPal\",\"Boleto\"]",
-            dueDate: "2021-12-30 00:00:00"
         },
         {
             id: 5,
@@ -95,16 +79,12 @@ export const productsList = [
             },
             price: 120,
             category: "Camisetas", 
-            inCart: false,
-            count: 0,
-            total: 0,
             paymentMethods: "[\"Cartão de Crédito\",\"Cartão de Débito\",\"PayPal\",\"Boleto\"]",
-            dueDate: "2021-12-30 00:00:00"
         },
         {
             id: 6,
             title: 'Astronaut TV',
-            description:' lorem ipsum',
+            description:'Camiseta de algodão premium, com estampa divertida.',
             image: tshirt6, 
             details: {
                 brand: '',
@@ -112,13 +92,9 @@ export const productsList = [
                 size: '[\'PP\', \'P\', \'M\', \'G\', \'GG\']',
                 material: 'Algodão',
             },
-            price: 120,
+            price: 100,
             category: "Camisetas",
-            inCart: false,
-            count: 0,
-            total: 0,
             paymentMethods: "[\"Cartão de Crédito\",\"Cartão de Débito\",\"PayPal\",\"Boleto\"]",
-            dueDate: "2021-12-30 00:00:00"
         },
 
     ]

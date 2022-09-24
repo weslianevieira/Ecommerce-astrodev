@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import Cart from "./components/Cart";
 import Header from "./components/Header";
+import Footer from './components/Footer'
 
 export default class App extends Component {
     state = {
@@ -192,7 +193,7 @@ export default class App extends Component {
                       textAlign={'center'}
                       marginTop='1em'
                       >
-                      Valor Total: R${this.totalValue()},00
+                      Valor Total: <Text color='orange'>R${this.totalValue()},00</Text>
                     </Heading>
                 </Box>
                 
@@ -219,10 +220,7 @@ export default class App extends Component {
                           return this.state.maxPrice === '' || product.price <= this.state.maxPrice
                         })
                         .sort((currentProduct, nextProduct) => {
-                          switch (this.state.sortingParameter) {
-                            case 'title':
-                              return this.state.order * ( currentProduct.title.sort() - nextProduct.title.sort())
-                            default:
+                          if(this.state.sortingParameter) {
                               return this.state.order * (currentProduct.price - nextProduct.price)
                           }
                         })
@@ -236,8 +234,9 @@ export default class App extends Component {
                           )
                         })
                         }
-                </SimpleGrid>             
+                </SimpleGrid>            
                 </Flex>
+                <Footer /> 
             </Box>
         )
     }
